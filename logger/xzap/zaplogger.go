@@ -13,7 +13,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"gopkg.in/natefinch/lumberjack.v2"
 
-	logging "github.com/ProjectsTask/EasySwapBase/logger"
+	logging "github.com/falconry9527/EasySwapBase/logger"
 )
 
 const (

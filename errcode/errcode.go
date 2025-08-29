@@ -105,17 +105,17 @@ func ParseErr(err error) *Err {
 	if err == nil {
 		return NoErr
 	}
-
+	// 如果是业务类型结构，直接返回
 	if e, ok := err.(*Err); ok {
 		return e
 	}
-
+	// 如果不是继续解析
 	s, _ := status.FromError(err)
 	c := uint32(s.Code())
 	if c == CodeCustom {
 		return NewCustomErr(s.Message())
 	}
-
+	// 最后检查是不是业务类型 返回码
 	return ParseCode(c)
 }
 
@@ -124,6 +124,6 @@ func ParseCode(code uint32) *Err {
 	if e, ok := codeToErr[code]; ok {
 		return e
 	}
-
+	// 如果不是业务类型返回码，直接返回固定错误
 	return ErrUnexpected
 }

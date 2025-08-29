@@ -42,6 +42,7 @@ func GetTraceId(ctx context.Context) string {
 	if spanCtx.HasTraceID() {
 		return spanCtx.TraceID().String()
 	}
+	//return strings.Replace(uuid.NewString(), "-", "", -1)
 
 	return ""
 }
